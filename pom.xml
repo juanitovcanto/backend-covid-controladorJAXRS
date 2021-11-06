@@ -21,7 +21,23 @@
       <maven.compiler.source>1.8</maven.compiler.source>
       <maven.compiler.target>1.8</maven.compiler.target>
   </properties>
+
+
     <dependencies>
+      <dependency>
+        <groupId>org.jboss.spec.javax.annotation</groupId>
+        <artifactId>jboss-annotations-api_1.3_spec</artifactId>
+        <version>2.0.1.Final</version>
+        <scope>provided</scope>
+      </dependency>
+      <dependency>
+        <groupId>javax</groupId>
+        <artifactId>javaee-api</artifactId>
+        <version>8.0.1</version>
+        <scope>provided</scope>
+      </dependency>
+
+
       <dependency>
         <groupId>org.jboss.spec.javax.ws.rs</groupId>
         <artifactId>jboss-jaxrs-api_2.1_spec</artifactId>
@@ -35,13 +51,61 @@
         <version>2.0.1.Final</version>
         <scope>provided</scope>
       </dependency>
-
       
-    </dependencies>
+      <dependency>
+        <groupId>org.jboss.spec.javax.ejb</groupId>
+        <artifactId>jboss-ejb-api_3.2_spec</artifactId>
+        <version>2.0.0.Final</version>
+        <scope>provided</scope>
+      </dependency>
+      
+          <!-- RESTEASY -->
+    <dependency>
+      <groupId>org.jboss.resteasy</groupId>
+      <artifactId>resteasy-jackson2-provider</artifactId>
+      <version>4.7.1.Final</version>
+      <scope>provided</scope>
+    </dependency>
 
+    <dependency>
+      <groupId>org.jboss.resteasy</groupId>
+      <artifactId>resteasy-client</artifactId>
+      <version>4.7.1.Final</version>
+      <scope>test</scope>
+   </dependency>
+
+   <!-- EJB CLIENT -->
+           <!-- The EJB Client BOM provides application server-compatible dependency management,
+        used for building, testing or debugging EJB client applications. Import the BOM to the
+        dependency management section of the app's pom.xml file and then set dependencies on specific artifacts.
+        Alternatively, as shown in the following example, set a single dependency on the BOM for the app to depend
+        on all the artifacts it manages.
+        -->
+        <dependency>
+          <groupId>org.wildfly</groupId>
+          <artifactId>wildfly-ejb-client-bom</artifactId>
+          <version>25.0.0.Final</version>
+          <type>pom</type>
+          <scope>compile</scope>
+      </dependency>
+
+      <!-- Include the ejb client jars -->
+      <!-- We depend on the EJB remote business interfaces of this application -->
+
+      <dependency>
+          <groupId>wildfly.backend.covid</groupId>
+          <artifactId>API</artifactId>
+          <version>1.0-SNAPSHOT</version>
+          <type>ejb</type>
+      </dependency>
+
+
+
+    </dependencies>
+    
 
   <build>
-    <finalName>controladorEJB</finalName>
+    <finalName>Backend_Covid_ClienteEJBcasos</finalName>
     <plugins>
       <plugin>
         <groupId>org.wildfly.plugins</groupId>
